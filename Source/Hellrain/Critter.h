@@ -9,35 +9,35 @@
 UCLASS()
 class HELLRAIN_API ACritter : public APawn
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	ACritter();
+    // Sets default values for this pawn's properties
+    ACritter();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+    // Called when the game starts or when spawned
+    virtual void BeginPlay() override;
 
 public:	
-	UPROPERTY(EditAnywhere)
-	class UStaticMeshComponent* MeshComponent;
+    UPROPERTY(EditAnywhere)
+    class UStaticMeshComponent* MeshComponent;
 
-	UPROPERTY(EditAnywhere)
-	class UCameraComponent* Camera;
+    UPROPERTY(EditAnywhere)
+    class UCameraComponent* Camera;
 
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+    UPROPERTY(EditAnywhere, Category = "Pawn Movement")
+    float MaxSpeed;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+    // Called every frame
+    virtual void Tick(float DeltaTime) override;
+
+    // Called to bind functionality to input
+    virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	FVector CurrentVelocity;
-	
-	UPROPERTY(EditAnywhere)
-	float MaxSpeed;
+    FVector CurrentVelocity;
 
-	void MoveForward(float Value);
-	void MoveRight(float Value);
+    void MoveForward(float Value);
+    void MoveRight(float Value);
 };
